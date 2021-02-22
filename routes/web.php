@@ -18,7 +18,14 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dash', function () {
-    return view('dash.index');
+    $categoria = \App\Models\Category::all()->count();
+    $libros = \App\Models\Libros::all()->count();
+    $user = \App\Models\User::all()->count();
+    return view('dash.index',[
+        'categorias' => $categoria,
+        'libros'    => $libros,
+        'user'      => $user,
+    ]);
 })->name('dash');
 
 Route::resource('/Category', 'App\Http\Controllers\CategoryController');

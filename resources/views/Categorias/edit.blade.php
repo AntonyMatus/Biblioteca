@@ -8,7 +8,7 @@
 
 @section('content')
 
-<form action="/Category/{{$categoria->id}}" method="POST">
+<form action="/Category/{{$categoria->id}}" method="POST" >
     @csrf
     @method('PUT')
     <div class="mb-3">

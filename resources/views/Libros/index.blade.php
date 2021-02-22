@@ -16,7 +16,7 @@
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">Autor</th>
-            <th scope="col">Categoría</th>
+            <th scope="col">Prestamista</th>
             <th scope="col">Estado</th>
             <th scope="col">Acciones</th>
         </tr>
@@ -24,10 +24,10 @@
     <tbody>
         @foreach($libros as $row)
         <tr>
-            <td width="5%">{{ $row->id}}</td>
+            <td width="5%">{{$row->id}} </td>
             <td width="20%">{{ $row->nombre}} </td>
             <td width="20%">{{ $row->autor}} </td>
-            <td width="20%">{{ $row->categories_id}} </td>
+            <td width="20%">{{ $row->user->name}} </td>
            @if($row->status == 0)
             <td width="20%"><p class="btn btn-info">Disponible</p></td>
             @else

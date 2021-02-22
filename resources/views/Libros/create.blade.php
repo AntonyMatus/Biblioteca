@@ -8,7 +8,7 @@
 
 @section('content')
 
-<form action="/Libros" method="POST">
+<form action="/Libros" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
         <label for="" class="form-label">Nombre</label>

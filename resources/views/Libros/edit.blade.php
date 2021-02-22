@@ -40,7 +40,7 @@
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Foto</label>
-        <input id="foto" name="foto" type="file" class="form-control" tabindex="2" required>
+        <input id="foto" name="foto" type="file" class="form-control" tabindex="2" >
     </div>
     <a href="/Category" class="btn btn-secondary" tabindex="3">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>

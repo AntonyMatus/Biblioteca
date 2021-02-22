@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Libros;
+use Facade\FlareClient\Stacktrace\File;
+use Illuminate\Support\Facades\Storage;
 
 class LibroController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,8 +46,21 @@ class LibroController extends Controller
     public function store(Request $request)
     {
         // $libros = $request->all();
-        $datoLibro = request()->except('_token');
-        Libros::insert($datoLibro);
+
+        $file = $request->file('foto');
+        $file->move('upload/libros', $file->getClientOriginalName());
+
+
+        $libros = new Libros();
+        $libros->nombre = $request->get('nombre');
+        $libros->autor = $request->get('autor');
+        $libros->status = $request->get('status');
+        $libros->categories_id = $request->get('categories_id');
+        $libros->fecha_publicacion = $request->get('fecha_publicacion');
+        $libros->foto = $file->getClientOriginalName();
+
+        $libros->save();
+
         return redirect('/Libros');
     }
 
